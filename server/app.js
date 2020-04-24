@@ -23,6 +23,7 @@ app
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
+    //header settings
 })
 .use(bodyParser.json());
 
@@ -48,6 +49,7 @@ app.post('/api/stuff', (req, res, next) => {
             });
         }
     );
+    //db post
 });
 
 app.get('/api/stuff/:id', (req, res, next) => {
