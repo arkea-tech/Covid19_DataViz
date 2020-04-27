@@ -9,6 +9,10 @@ function App() {
   const [test, setTest] = useState(600);
   const [death, setDeath] = useState(300);
   const [rec, setRec] = useState(100);
+  const [zoom, setZoom] = useState(0);
+  const [lat, setLat] = useState( 59.95);
+  const [long, setLong] = useState(30.33);
+
   const AnyReactComponent = ({ text }) => (
   <div style={{
     color: 'white',
@@ -32,12 +36,14 @@ function App() {
       // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
-          defaultCenter={{lat: 59.95, lng: 30.33}}
-          defaultZoom={0}
+          bootstrapURLKeys={{ key: 'AIzaSyDT8niDsJMDOvWCmxCh4n7BCKxpiZleQIg'}}
+          defaultCenter={{lat: lat, lng: long}}
+          defaultZoom={zoom}
         >
         <AnyReactComponent
-          lat={59.955413}
-          lng={30.337844}
+          lat={lat}
+          lng={long}
+          zoom={zoom}
         />
       </GoogleMapReact>
       </div>
@@ -84,10 +90,12 @@ function App() {
     console.log("hello")
     setDeath(death);
     setRec(rec);
-    setTest(tot)
+    setTest(tot);
+    setZoom(10);
+    setLat(1);
   }
 
-  function ReptileList() {
+  function CountryList() {
     const countries = ['france', 'italie', 'espagne'];
 
     const test = [{
@@ -150,7 +158,7 @@ function App() {
         </p>
       </header>
       <header className="List-header">
-            {ReptileList()}
+            {CountryList()}
       </header>
       <header className="Map-header">
             {DispMap()}
