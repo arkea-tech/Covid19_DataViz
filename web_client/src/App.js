@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Chart } from 'react-charts';
 import GoogleMapReact from 'google-map-react';
+import MapContainer from './map_Container'
 
 function App() {
 
@@ -10,26 +11,18 @@ function App() {
   const [death, setDeath] = useState(300);
   const [rec, setRec] = useState(100);
   const [zoom, setZoom] = useState(0);
-  const [lat, setLat] = useState( 59.95);
-  const [long, setLong] = useState(30.33);
+  const [lat, setLat] = useState(48.8566);
+  const [long, setLong] = useState(2.3522);
 
   const AnyReactComponent = ({ text }) => (
-  <div style={{
-    color: 'white',
-    background: 'grey',
-    padding: '15px 10px',
-    display: 'inline-flex',
-    textAlign: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '100%',
-    transform: 'translate(-50%, -50%)',
-    width: '50%',
-    height: '50%'
-  }}>
-    {text}
-  </div>
-);
+    <div>
+      <header className="Marker-header">
+        <p>
+            {text}
+        </p>
+      </header>
+    </div>
+  );
 
   function DispMap () {
     return (
@@ -44,6 +37,13 @@ function App() {
           lat={lat}
           lng={long}
           zoom={zoom}
+          text={'fucked'}
+          radius={1200}
+        />
+        <AnyReactComponent
+          lat={59.96}
+          lng={30.33}
+          text={'fuck'}
         />
       </GoogleMapReact>
       </div>
@@ -96,27 +96,26 @@ function App() {
   }
 
   function CountryList() {
-    const countries = ['france', 'italie', 'espagne'];
 
     const test = [{
-			"country": "france",
-			"tot": 30,
-			"death": 10,
-			"rec": 15
-		},
-		{
-			"country": "italy",
-			"tot": 38,
-			"death": 12,
-			"rec": 8
-		},
-		{
-			"country": "esapgne",
-			"tot": 33,
-			"death": 12,
-			"rec": 13
-		}
-	];
+  			"country": "france",
+  			"tot": 30,
+  			"death": 10,
+  			"rec": 15
+  		},
+  		{
+  			"country": "italy",
+  			"tot": 38,
+  			"death": 12,
+  			"rec": 8
+  		},
+  		{
+  			"country": "esapgne",
+  			"tot": 33,
+  			"death": 12,
+  			"rec": 13
+  		}
+	  ];
 
     const nb = 30;
     const tab = [30, 33, 36];
@@ -137,8 +136,8 @@ function App() {
 
   return (
     <div className="App">
-    <header className="Back-header">
-    </header>
+      <header className="Back-header">
+      </header>
       <header className="Total-header">
         <p>
             Total case:<br />
@@ -161,7 +160,7 @@ function App() {
             {CountryList()}
       </header>
       <header className="Map-header">
-            {DispMap()}
+            <MapContainer/>
       </header>
       <header className="Chart-header">
         <p>
