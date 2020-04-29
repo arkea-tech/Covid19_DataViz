@@ -1,10 +1,14 @@
 const Thing = require('../models/thing');
+const axios = require('axios');
 
 exports.createThing = (req, res, next) => {
     const thing = new Thing({
-        dead: req.body.dead,
-        healed: req.body.healed,
-        case: req.body.case
+        country_code: req.params.country_code,
+        country_name: req.body.country_name,
+        total_dead: req.body.total_dead,
+        total_case: req.body.total_case,
+        population: req.body.population,
+        detail: req.body.detail
     });
 
     thing.save().then(
@@ -40,10 +44,12 @@ exports.getOneThing = (req, res, next) => {
 
 exports.modifyThing = (req, res, next) => {
     const thing = new Thing({
-        _id: req.params.id,
-        dead: req.body.dead,
-        healed: req.body.healed,
-        case: req.body.case
+        country_code: req.params.country_code,
+        country_name: req.body.country_name,
+        total_dead: req.body.total_dead,
+        total_case: req.body.total_case,
+        population: req.body.population,
+        detail: req.body.detail
     });
 
     Thing.updateOne({_id: req.params.id}, thing).then(
@@ -76,15 +82,44 @@ exports.deleteThing = (req, res, next) => {
 }
 
 exports.getAllStuff = (req, res, next) => {
-    Thing.find().then(
-        (things) => {
-            res.status(200).json(things);
-        }
-    ).catch(
-        (error) => {
-            res.status(400).json({
-                error: error
-            });
-        }
-    );
+    axios.get('http://api.kowanio.xyz/country/all').then(response => {
+        var stuff = [];
+
+        response.data.forEach(item => stuff.push({
+            country_code: item.country_code,
+            country_name: item.country_name,
+            total_dead: item.total_dead,
+            total_case: item.total_case,
+            population: item.population,
+            detail: item.detail
+        }));
+        //console.log(stuff);
+        const thing = new Thing({
+            covid_data: stuff
+        });
+
+        thing.save().then(
+            () => {
+                Thing.find().then(
+                    (things) => {
+                        res.status(200).json(things);
+                    }
+                ).catch(
+                    (error) => {
+                        res.status(400).json({
+                            error: error
+                        });
+                    }
+                );
+            }
+        ).catch(
+            (error) => {
+                res.status(400).json({
+                    error: error
+                });
+            }
+        );
+    }).catch(error => {
+        console.log(error);
+    });
 }
