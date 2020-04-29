@@ -32,7 +32,7 @@ const App: () => React$Node = () => {
           <View>
             <Image
               style={{flex: 1,
-                      width: 450,
+                      width: 420,
                       height: 500,
                       resizeMode: 'contain',
                       alignItems: 'center'
