@@ -13,29 +13,6 @@ const mapStyles = {
 
 function dispCircles() {
 
-  const test = [{
-      "country": "france",
-      "tot": 30,
-      "lat": 48.8566,
-      "lng": 2.3522,
-      "latlng": [40.4, -3.683333]
-    },
-    {
-      "country": "italy",
-      "tot": 38,
-      "lat": 52.51666667,
-      "lng": 13.4,
-      "latlng": [40.4, -3.683333]
-    },
-    {
-      "country": "esapgne",
-      "tot": 33,
-      "lat": 40.4,
-      "lng": -3.683333,
-      "latlng": [40.4, -3.683333]
-    }
-  ];
-
   console.log(coords)
   return coords.map((store) => {
     return <Circle
@@ -58,25 +35,9 @@ export class MapContainer extends Component {
         initialCenter={{
           lat: 48.8566,
           lng: 2.3522
-
-
-
-
         }}
         zoom={2.5}
       >
-        <Circle
-          radius={120000}
-          center={{ lat: 48.8566, lng: 2.3522}}
-          onMouseover={() => console.log('mouseover')}
-          onClick={() => console.log('click')}
-          onMouseout={() => console.log('mouseout')}
-          strokeColor='transparent'
-          strokeOpacity={0}
-          strokeWeight={5}
-          fillColor='red'
-          fillOpacity={0.8}
-        />
         {dispCircles()}
       </Map>
     );
