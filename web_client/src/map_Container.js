@@ -11,12 +11,11 @@ const mapStyles = {
   alignSelf: 'flex-start',
 };
 
-function dispCircles() {
+function dispCircles(deaths) {
 
-  console.log(coords)
   return coords.map((store) => {
     return <Circle
-      radius={120000}
+      radius={(15 * 20000)}
       center={{ lat: Number(store.CapitalLatitude), lng: Number(store.CapitalLongitude)}}
       strokeColor='transparent'
       strokeOpacity={0}
@@ -38,7 +37,7 @@ export class MapContainer extends Component {
         }}
         zoom={2.5}
       >
-        {dispCircles()}
+        {dispCircles(this.props.data)}
       </Map>
     );
   }

@@ -35,7 +35,7 @@
 .Back-header {
   background-color: #AC5A86;
   min-width: 100vw;
-  min-height: 107vh;
+  min-height: 100vh;
 }
 
 .Total-header {
@@ -68,7 +68,7 @@
   top: 10px;
   min-width: 15vw;
   max-width: 15vw;
-  min-height: 60vh;
+  min-height: 40vh;
 }
 
 .Rec-header {
@@ -85,7 +85,7 @@
   top: 10px;
   min-width: 15vw;
   max-width: 15vw;
-  min-height: 60vh;
+  min-height: 40vh;
 }
 
 .List-header {
@@ -101,6 +101,7 @@
   left: 10px;
   top: 20vh;
   min-height: 70vh;
+  max-height: 70vh;
   min-width: 15vw;
   max-width: 15vw;
 }
@@ -122,8 +123,8 @@
 }
 
 .Chart-header {
-  background-color: #7A2682;
   display: flex;
+  background-color: #7A2682;
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
@@ -132,10 +133,11 @@
   float: right;
   position: absolute;
   right: 10px;
-  top: 62vh;
+  top: 42vh;
   min-width: 31vw;
   max-width: 31vw;
-  min-height: 38vh;
+  min-height: 10vh;
+  min-height: 10vh;
 }
 
 .button {

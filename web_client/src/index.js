@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 ReactDOM.render(
   <React.StrictMode>
